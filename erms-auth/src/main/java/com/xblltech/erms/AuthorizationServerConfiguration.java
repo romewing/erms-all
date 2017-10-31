@@ -7,13 +7,16 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 
 import javax.sql.DataSource;
 
-//@Configuration
+/**
+ * @author
+ */
+@Configuration
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private DataSource dataSource;
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.jdbc(dataSource).
+        clients.jdbc(dataSource);
     }
 }
