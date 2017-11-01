@@ -13,6 +13,7 @@
         <module>erms-demo</module>
         <module>erms-zuul</module>
         <module>erms-auth</module>
+        <module>erms-config</module>
     </modules>
 
     <dependencyManagement>
@@ -34,6 +35,16 @@
         </dependencies>
 
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <plugins>
