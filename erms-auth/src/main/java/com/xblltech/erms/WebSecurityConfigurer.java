@@ -1,5 +1,8 @@
-package com.xblltech.erms;
+/*
+ * Copyright (c) 2017 旭博蓝凌.Co.Ltd. All rights reserved.
+ */
 
+package com.xblltech.erms;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,31 +11,23 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-/**
- * @author ZHANG YI
- */
 @Configuration
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth)
-            throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("john").password("123").roles("USER");
-    }
 
     @Override
     @Bean
-    public AuthenticationManager authenticationManagerBean()
-            throws Exception {
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin().permitAll();
+        super.configure(http);
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication().withUser("reader").password("reader").authorities("FOO_READ").and()
+                .withUser("writer").password("writer").authorities("FOO_READ", "FOO_WRITE");
     }
 }

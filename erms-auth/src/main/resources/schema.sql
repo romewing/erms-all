@@ -56,7 +56,7 @@ create table oauth_approvals (
 );
 drop table if exists oauth_client_details;
 create table oauth_client_details (
-    client_id VARCHAR(256) PRIMARY KEY,
+    client_id VARCHAR(64) PRIMARY KEY,
     resource_ids VARCHAR(256),
     client_secret VARCHAR(256),
     scope VARCHAR(256),
@@ -65,7 +65,7 @@ create table oauth_client_details (
     authorities VARCHAR(256),
     access_token_validity INTEGER,
     refresh_token_validity INTEGER,
-    additional_information VARCHAR(4096),
+    additional_information VARCHAR(256),
     autoapprove VARCHAR(256)
 );
 
