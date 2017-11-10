@@ -4,10 +4,13 @@ package com.xblltech.erms;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.oauth2.provider.token.AccessTokenConverter;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
+
+import java.security.KeyPair;
 
 /**
  * @author ZHANG Yi
@@ -18,12 +21,6 @@ public class AuthApplication {
         SpringApplication.run(AuthApplication.class);
     }
 
-   /* @Bean
-    public AccessTokenConverter accessTokenConverter() {
-        JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
-        return accessTokenConverter;
-    }*/
-
     @Bean
     TokenStore tokenStore() {
         return new JwtTokenStore(accessTokenConverter());
@@ -32,7 +29,8 @@ public class AuthApplication {
     @Bean
     JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
-        accessTokenConverter.setSigningKey("123");
+        KeyPair keyPair = new KeyStoreKeyFactory(new ClassPathResource("serverKeystore.jks"), "111111".toCharArray()).getKeyPair("alias1");
+        accessTokenConverter.setKeyPair(keyPair);
         return accessTokenConverter;
     }
 }

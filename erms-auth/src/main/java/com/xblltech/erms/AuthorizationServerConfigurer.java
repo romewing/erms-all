@@ -51,6 +51,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
         if (this.properties.getRealm() != null) {
             security.realm(this.properties.getRealm());
         }
+        security.allowFormAuthenticationForClients();
        /* security.tokenKeyAccess("permitAll()").checkTokenAccess(
                 "isAuthenticated()");*/
     }
@@ -59,7 +60,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory().withClient("web_app")
                 .scopes("FOO")
-                .authorities("FOO_READ", "FOO_WRITE")
+                .authorities("FOO_READ", "FOO_WRITE").autoApprove()
                 .authorizedGrantTypes("implicit", "refresh_token", "password", "authorization_code");
 
     }
