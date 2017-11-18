@@ -17,11 +17,13 @@
         <module>erms-config</module>
         <module>erms-data</module>
         <module>erms-eureka</module>
+        <module>erms-elasticsearch</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <elasticsearch.version>6.0.0</elasticsearch.version>
     </properties>
 
     <dependencyManagement>
