@@ -16,7 +16,7 @@ import java.io.Serializable;
  */
 
 @Entity
-@Table(name = "TABLE_1", schema = "test")
+@Table(name = "Course", schema = "S-C")
 public class User implements Serializable{
 
     @Id

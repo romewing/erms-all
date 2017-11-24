@@ -7,6 +7,7 @@ import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.EnableKafka;
 
@@ -18,7 +19,8 @@ import java.net.UnknownHostException;
 public class ESApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ESApplication.class);
+        ConfigurableApplicationContext context = SpringApplication.run(ESApplication.class);
+
     }
 
 

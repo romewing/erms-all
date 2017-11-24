@@ -5,6 +5,7 @@
 package com.xblltech;
 
 
+import com.xblltech.entity.Course;
 import com.xblltech.entity.Region;
 import com.xblltech.repository.UserRepository;
 import org.springframework.boot.SpringApplication;
@@ -22,9 +23,7 @@ public class DataApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(DataApplication.class);
         UserRepository userRepository = context.getBean(UserRepository.class);
-        List<Region> all = userRepository.findAll();
-        Region region = new Region("8","亚太");
-        userRepository.save(region);
+        List<Course> all = userRepository.findAll();
         System.out.println(all);
     }
 }

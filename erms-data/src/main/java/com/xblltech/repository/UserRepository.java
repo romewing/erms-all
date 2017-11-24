@@ -4,11 +4,12 @@
 
 package com.xblltech.repository;
 
+import com.xblltech.entity.Course;
 import com.xblltech.entity.Region;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author ZHANG Yi
  */
-public interface UserRepository extends JpaRepository<Region, String>{
+public interface UserRepository extends JpaRepository<Course, String>{
 }
