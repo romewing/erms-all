@@ -3,21 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-
-
     <groupId>com.xblltech.erms</groupId>
     <artifactId>erms-all</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>erms-demo</module>
-        <module>erms-zuul</module>
-        <module>erms-auth</module>
-        <module>erms-config</module>
-        <module>erms-data</module>
-        <module>erms-eureka</module>
-        <module>erms-elasticsearch</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
@@ -88,6 +79,7 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+        <!--
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
@@ -96,5 +88,18 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+        -->
     </repositories>
+    <distributionManagement>
+        <repository>
+            <id>xbll-release</id>
+            <name>xblltech Release Nexus Repository</name>
+            <url>http://192.168.1.230:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>xbll-snapshot</id>
+            <name>xblltech Snapshot Nexus Repository</name>
+            <url>http://192.168.1.230:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

@@ -30,7 +30,7 @@ public class ESApplication {
         ConfigurableApplicationContext context = SpringApplication.run(ESApplication.class);
         TransportClient transportClient = context.getBean(TransportClient.class);
         SearchResponse searchResponse = transportClient.prepareSearch("bid").setTypes("sprecc").setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
-                .setQuery(QueryBuilders.termQuery("name", "四川"))                 // Query
+                .setQuery(QueryBuilders.termQuery("name", "川"))                 // Query
                 .setFrom(0).setSize(60).setExplain(true)
                 .get();
         System.out.println(searchResponse.getHits().totalHits+"===");
